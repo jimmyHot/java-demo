@@ -15,7 +15,6 @@ public class SingleLinkedListTest
     @Test
     public void shouldAnswerWithTrue()
     {
-
         assertTrue( true );
     }
 }
