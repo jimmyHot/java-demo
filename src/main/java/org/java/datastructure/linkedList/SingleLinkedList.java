@@ -24,12 +24,13 @@ public class SingleLinkedList {
         HeroNode temp = head;
         while (true) {
             if (temp.getNext() == null) {
-                // 最后一个节点
-                temp.setNext(heroNode);
+                //扎到插入节点的前一个节点
                 break;
             }
             temp = temp.getNext();
         }
+        // 最后一个节点
+        temp.setNext(heroNode);
     }
 
 
@@ -138,7 +139,7 @@ public class SingleLinkedList {
     /**
      * 列表展示
      */
-    public void list() {
+    public HeroNode list() {
 
         if (head.getNext() == null) {
             System.out.println("链表内容为空");
@@ -151,6 +152,7 @@ public class SingleLinkedList {
             System.out.println(temp.toString());
             temp = temp.getNext();
         }
+        return head;
     }
 
 
@@ -231,7 +233,7 @@ public class SingleLinkedList {
     /**
      * 单链表反转
      * 方法1：利用栈先进后出的特点
-     * todo:不太对，同样是原链表结构没改变，通知新增实现，可改进
+     * 该方法特点：原链表结构没改变，通知新增实现
      */
     public HeroNode reverseByStack() {
 
@@ -280,7 +282,7 @@ public class SingleLinkedList {
     /**
      * 单链表反转
      * 方法2：遍历链表，将每一个节点添加到新的链表中最前端即可
-     * todo:代码可实现反转，但效果不佳：原因：不是实现了原链表1的反转，而是新生成了链表2
+     * 方法特点：原链表数据结构未变更，而是新生成了链表2
      */
     public void reverseOld() {
         if (isEmpty()) {
