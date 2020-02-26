@@ -1,10 +1,10 @@
 package org.java.datastructure.linkedList;
 
 
-import org.java.datastructure.linkedList.HeroNode;
-import org.java.datastructure.linkedList.SingleLinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -32,10 +32,12 @@ public class SingleLinkedListTest {
     public void addHeroNode() {
         //test
         singleLinkedList.addHeroNode(node1);
+        assertEquals(1,singleLinkedList.getCount());
         singleLinkedList.addHeroNode(node2);
+        assertEquals(2,singleLinkedList.getCount());
         //TODO 再次添加重复元素node1时，为何node1原结构发生改变？
-       /* singleLinkedList.addHeroNode(node1);
-        singleLinkedList.addHeroNode(node2);*/
+        singleLinkedList.addHeroNode(node1);
+        assertEquals(3,singleLinkedList.getCount());
         singleLinkedList.list();
     }
 

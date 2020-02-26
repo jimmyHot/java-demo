@@ -9,8 +9,14 @@ public class SingleLinkedList {
 
     private HeroNode head = new HeroNode(0, "");
 
+    private int count;
+
     public SingleLinkedList(HeroNode head) {
         this.head = head;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     /**
@@ -22,15 +28,15 @@ public class SingleLinkedList {
         //遍历链表，找到最后一个节点后添加heroNode
         //添加临时变量temp 充当指针
         HeroNode temp = head;
+        //扎到插入节点的前一个节点
         while (true) {
-            if (temp.getNext() == null) {
-                //扎到插入节点的前一个节点
+            if(temp.getNext()==null){
+                temp.setNext(heroNode);
+                count++;
                 break;
             }
             temp = temp.getNext();
         }
-        // 最后一个节点
-        temp.setNext(heroNode);
     }
 
 

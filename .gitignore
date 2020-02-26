@@ -6,5 +6,5 @@
 .idea
 *.iml
 out
-.target
+/target/
 gen
