@@ -1,13 +1,11 @@
 package org.java.datastructure;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.java.datastructure.linkedList.HeroNode;
 import org.java.datastructure.linkedList.SingleLinkedList;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 /**
  * Unit test for simple App.
@@ -20,7 +18,7 @@ public class SingleLinkedListTest {
     HeroNode node3;
     HeroNode node4;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         singleLinkedList = new SingleLinkedList();
         node1 = new HeroNode(1, "贾丽敏");
