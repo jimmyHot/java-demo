@@ -1,4 +1,4 @@
-package org.java.datastructure;
+package org.java.datastructure.linkedList;
 
 
 import org.java.datastructure.linkedList.HeroNode;
