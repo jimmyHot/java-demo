@@ -24,7 +24,7 @@ public class SingleLinkedList {
      *
      * @param heroNode
      */
-    public void addHeroNode(HeroNode heroNode) {
+    public void  addHeroNode(HeroNode heroNode) {
         //遍历链表，找到最后一个节点后添加heroNode
         //添加临时变量temp 充当指针
         HeroNode temp = head;
