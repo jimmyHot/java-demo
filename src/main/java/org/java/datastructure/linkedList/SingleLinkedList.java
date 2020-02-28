@@ -30,7 +30,7 @@ public class SingleLinkedList {
         HeroNode temp = head;
         //扎到插入节点的前一个节点
         while (true) {
-            if(temp.getNext()==null){
+            if (temp.getNext() == null) {
                 temp.setNext(heroNode);
                 count++;
                 break;
@@ -51,7 +51,7 @@ public class SingleLinkedList {
         //定义临时变量temp用于遍历链表
         HeroNode temp = this.head;
         boolean insertFlag = false;
-        //思路 1
+        //思路 1 每种插入情况分开考虑，例如空链表插入和链表末端插入都是一种情况，不需分开考虑问题
       /*  while (true){
             if(temp==null){
                 System.out.println("找不到可插入该节点的入口");
@@ -89,6 +89,7 @@ public class SingleLinkedList {
             //更改next
             heroNode.setNext(temp.getNext());
             temp.setNext(heroNode);
+            count++;
         }
     }
 
@@ -109,6 +110,7 @@ public class SingleLinkedList {
         while (true) {
             if (temp.getNext().getNo() == heroNode.getNo()) {
                 temp.setNext(temp.getNext().getNext());
+                count--;
                 break;
             }
             temp = temp.getNext();
@@ -168,15 +170,6 @@ public class SingleLinkedList {
      * @return
      */
     public int getNumber() {
-        HeroNode temp = this.head;
-        int count = 0;
-        while (true) {
-            if (temp.getNext() == null) {
-                break;
-            }
-            count++;
-            temp = temp.getNext();
-        }
         return count;
     }
 
@@ -189,51 +182,60 @@ public class SingleLinkedList {
      * @param k
      * @return
      */
-    public void getLastIndexNode(int k) {
+    public HeroNode getLastIndexNode(int k) {
         //check k
-        int totalNum = getNumber();
-        if (k < 0 || k > totalNum) {
-            System.out.printf("链表的总节点个数为 %d,获取该链表的倒数第 %d 个值无意义%n", totalNum, k);
-            return;
+        if (isEmpty()) {
+            throw new RuntimeException("链表为空~");
         }
-        int x = totalNum - k + 1;
-        int count = 0;
+        if (k < 0 || k > count) {
+            throw new RuntimeException("参数无意义");
+        }
+        int x = count - k + 1;
+        int moveCount = 0;
         HeroNode temp = this.head;
-        while (true) {
-            if (count == x) {
-                System.out.printf("该链表倒数第%d个节点为：%s %n", k, temp.toString());
-                break;
+        while (temp != null) {
+            if (moveCount == x) {
+                return temp;
             }
-            count++;
+            moveCount++;
             temp = temp.getNext();
         }
+        throw new RuntimeException("有问题~");
     }
 
     /**
      * 查找单链表中倒数第k个节点
      * 方法2：将单链表循环扔进栈中，获取第 k个节点即可
+     * 废弃：思路可以实现，但相比于上一个方法，该方法需遍历两次
      *
      * @param k
      * @return
      */
-    public void getNodeByNo2(int k) {
+    @Deprecated
+    public HeroNode getLastIndexNode2(int k) {
         //check k
-        if (k < 0) {
-            System.out.printf("获取该链表的倒数第 %d 个值无意义%n", k);
-            return;
-        }
-
         if (isEmpty()) {
-            System.out.println("链表为空，无法获取数据");
+            throw new RuntimeException("链表为空~");
         }
-
-        HeroNode temp = this.head;
+        if (k < 0 || k > count) {
+            throw new RuntimeException("参数无意义");
+        }
+        HeroNode temp = this.head.getNext();
         Stack<HeroNode> heroNodeStack = new Stack<>();
-        while (true) {
-
-
+        while (temp != null) {
+            heroNodeStack.push(temp);
+            temp = temp.getNext();
         }
-
+        //遍历栈，找到第k个节点返回
+        int moveCount = 1;
+        while (!heroNodeStack.empty()) {
+            HeroNode pop = heroNodeStack.pop();
+            if (moveCount == k) {
+                return pop;
+            }
+            moveCount++;
+        }
+        throw new RuntimeException("有问题~");
     }
 
     /**
@@ -251,16 +253,18 @@ public class SingleLinkedList {
         }
         HeroNode temp = head.getNext();
         Stack<HeroNode> heroNodeStack = new Stack<>();
+        //遍历链表 放入栈
         while (temp != null) {
             heroNodeStack.push(temp);
             temp = temp.getNext();
         }
+        //从栈取出放入新链表
         HeroNode reverseHead = new HeroNode(0, "");
         while (!heroNodeStack.empty()) {
             HeroNode node = heroNodeStack.pop();
             add(reverseHead, node);
         }
-        //设置
+        //返回新链表
         return reverseHead;
     }
 
@@ -269,11 +273,7 @@ public class SingleLinkedList {
      *
      * @return 新的链表节点
      */
-    public void add(HeroNode head, HeroNode node) {
-        if (head == null) {
-            System.out.println("头结点 为空~");
-            return;
-        }
+    private void add(HeroNode head, HeroNode node) {
         HeroNode temp = head;
         while (true) {
             if (temp.getNext() == null) {
