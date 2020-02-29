@@ -23,6 +23,13 @@ class ExpressionStackTest {
     @Test
     void CalculatePostfixExpression() {
         assertEquals(11, expressionStack.CalculatePostfixExpression("1 3 4 + 2 * + 4 -"));
+        assertEquals(20, expressionStack.CalculatePostfixExpression("10 3 4 + 2 * + 4 -"));
     }
 
+    @Test
+    void formatMidToPostFixExpression(){
+        assertEquals("1 3 4 + 2 * + 4 -",expressionStack.formatMidToPostFixExpression("1+(3+4)*2-4"));
+        assertEquals("1 2 3 + 4 * + 5 -",expressionStack.formatMidToPostFixExpression("1+((2+3)*4)-5"));
+        assertEquals("1 10 3 + 4 * + 5 -",expressionStack.formatMidToPostFixExpression("1+((10+3)*4)-5"));
+    }
 }

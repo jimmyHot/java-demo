@@ -109,6 +109,7 @@ class SingleLinkedListTest {
         singleLinkedList.addHeroNodeInOrder(node3);
         HeroNode reverseNode = singleLinkedList.reverseByStack();
         System.out.println(reverseNode.toString());
+        System.out.println(singleLinkedList.list());
     }
 
     @Test
