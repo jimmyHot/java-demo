@@ -242,6 +242,7 @@ public class SingleLinkedList {
      * 单链表反转
      * 方法1：利用栈先进后出的特点
      * 该方法特点：原链表结构没改变，通知新增实现
+     * TODO:功能实现没有问题，但原链表结构发生改变，根本原因：对象在内存中的存储方式，该方法会导致原链表结构发生变更
      */
     public HeroNode reverseByStack() {
 

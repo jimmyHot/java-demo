@@ -109,7 +109,7 @@ class SingleLinkedListTest {
         singleLinkedList.addHeroNodeInOrder(node3);
         HeroNode reverseNode = singleLinkedList.reverseByStack();
         System.out.println(reverseNode.toString());
-        System.out.println(singleLinkedList.list());
+        singleLinkedList.list();
     }
 
     @Test
@@ -119,6 +119,8 @@ class SingleLinkedListTest {
         singleLinkedList.addHeroNodeInOrder(node1);
         singleLinkedList.addHeroNodeInOrder(node3);
         singleLinkedList.reverseOld();
+        System.out.println("原结构链表-----------------------");
+        singleLinkedList.list();
     }
 
     @Test
@@ -138,5 +140,7 @@ class SingleLinkedListTest {
         singleLinkedList.addHeroNodeInOrder(node1);
         singleLinkedList.addHeroNodeInOrder(node3);
         singleLinkedList.reversePrint();
+        System.out.println("原结构链表-----------------------");
+        singleLinkedList.list();
     }
 }
