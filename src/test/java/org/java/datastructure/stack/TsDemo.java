@@ -8,7 +8,7 @@ public class TsDemo {
      * String类虽然是引用数据类型,但是他当作参数传递时和基本数据类型是一样的
      */
     public static void main(String[] args) {
-        String s = "abc";
+        /*String s = "abc";
         System.out.println(s);
         change(s);
         System.out.println(s);
@@ -16,7 +16,7 @@ public class TsDemo {
 
         System.out.println(s);
         changeString(s);
-        System.out.println(s);
+        System.out.println(s);*/
 
 
         System.out.println("---------------------");
@@ -24,13 +24,21 @@ public class TsDemo {
         sb.append("abc");
         System.out.println(sb);
         change(sb);
+        //changeNothing(sb);
         System.out.println(sb);
+
     }
 
     public static void change(StringBuffer sb) {
         //调用该方法时实际参数的sb和形式参数的sb指向的是同一个对象(StringBuffer容器)
         //方法内部又在该容器里添加了"xyz",所以方法结束时,局部变量的sb消失,但是实际参数的sb所指向的容器的内部的内容已经发生了改变
         sb.append("xyz");
+    }
+
+    public static void changeNothing(StringBuffer sb) {
+        //调用该方法时实际参数的sb和形式参数的sb指向的是同一个对象(StringBuffer容器)
+        //当new一个新对象时，即在堆空间新开辟一块内存，sb指向新空间的首地址，该内容变更，但不影响原来的内存空间
+        sb = new StringBuffer("xyz");
     }
 
     public static void change(String s) {
