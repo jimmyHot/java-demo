@@ -11,4 +11,11 @@ public class Node {
         this.no = no;
     }
 
+    @Override
+    public String toString() {
+        return "Node{" +
+                "no=" + no +
+                ", next=" + next +
+                '}';
+    }
 }
