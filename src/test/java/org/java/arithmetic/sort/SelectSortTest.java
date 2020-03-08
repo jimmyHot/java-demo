@@ -6,19 +6,18 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BubbleSortTest {
+class SelectSortTest {
 
 
     @Test
     void solutionA() {
-        BubbleSort bubbleSort = new BubbleSort();
+        SelectSort selectSort = new SelectSort();
         int[] toSort = new int[]{3, 9, -1, 10, 20};
-        bubbleSort.solutionA(toSort);
-        int[] actual = new int[]{-1, 3, 9, 10, 20};
-        assertEquals(Arrays.toString(actual), Arrays.toString(toSort));
+        selectSort.solutionA(toSort);
+        int[] expect = new int[]{20, 10, 9, 3, -1};
+        assertEquals(Arrays.toString(expect), Arrays.toString(toSort));
+
     }
-
-
 
     @Test
     void TestTime() {
@@ -27,9 +26,10 @@ class BubbleSortTest {
         for (int i = 0; i < toSort.length; i++) {
             toSort[i] = (int) (Math.random() * 80000);
         }
-        BubbleSort bubbleSort = new BubbleSort();
-        bubbleSort.solutionA(toSort);
+        SelectSort selectSort = new SelectSort();
+        selectSort.solutionA(toSort);
         long endTime = System.currentTimeMillis();
         System.out.println("花费时间为" + (endTime - startTime));
     }
+
 }

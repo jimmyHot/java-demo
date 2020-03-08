@@ -24,12 +24,10 @@ public class RecursionApplication {
      */
     public Node reverse(Node node) {
         count++;
-        Node temp;
         if (node.getNext() == null) {
             return node;
-        } else {
-            temp = reverse(node.getNext());
         }
+        Node temp = reverse(node.getNext());
         node.getNext().setNext(node);
         node.setNext(null);
         return temp;
@@ -75,7 +73,7 @@ public class RecursionApplication {
      * 将第一个皇后从第一行的第一列位置开始，循环
      * 例如：放第3个皇后位置时，第一个和第二个皇后位置固定的情况下，将第3个皇后可以放置的所有位置统计出
      * 每一次回溯都是一种解法
-     *
+     * <p>
      * todo:这个思路写的太不好了，抽离不出来
      */
     private int max = 8;
@@ -101,21 +99,22 @@ public class RecursionApplication {
      * 汉若塔问题
      * 思路：
      * 递归分治
+     *
      * @param from
      * @param to
      * @param temp
      * @param n
      */
-    public void hanota(List<Integer> from, List<Integer> to, List<Integer> temp, int n){
-        if(n==1){
-            to.add(from.remove(from.size()-1));
-        }else{
+    public void hanota(List<Integer> from, List<Integer> to, List<Integer> temp, int n) {
+        if (n == 1) {
+            to.add(from.remove(from.size() - 1));
+        } else {
             //将A上的n-1个挪到B上
-            hanota(from,temp,to,n-1);
+            hanota(from, temp, to, n - 1);
             //将A上的最后一个挪到C上
-            hanota(from,to,temp,1);
+            hanota(from, to, temp, 1);
             //将B上的n-1个挪到C上
-            hanota(temp,to,from,n-1);
+            hanota(temp, to, from, n - 1);
         }
     }
 
