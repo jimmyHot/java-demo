@@ -2,7 +2,7 @@ package org.java.datastructure.Recursion;
 
 import org.java.datastructure.linkedList.Node;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -31,6 +31,47 @@ public class RecursionApplication {
         node.getNext().setNext(node);
         node.setNext(null);
         return temp;
+    }
+
+    /**
+     * 尾递归实现链表的反转
+     *
+     * @param preNode
+     * @param node
+     * @return
+     */
+    public Node reverseByTail(Node preNode, Node node) {
+        if (node == null) {
+            return preNode;
+        }
+        Node nextNode = node.getNext();
+        node.setNext(preNode);
+        return reverseByTail(node, nextNode);
+    }
+
+    /**
+     * 阶乘问题
+     * @param n
+     * @return
+     */
+    public int fib(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        return n * fib(n - 1);
+    }
+
+    /**
+     * 尾递归实现阶乘问题
+     * @param n
+     * @param tempResult
+     * @return
+     */
+    public int fibByTail(int n, int tempResult) {
+        if (n == 1) {
+            return tempResult;
+        }
+        return fibByTail(n - 1, n * tempResult);
     }
 
     /**
