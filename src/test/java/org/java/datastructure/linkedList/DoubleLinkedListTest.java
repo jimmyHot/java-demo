@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListTest {
 
+
     DoubleLinkedList doubleLinkedList;
     HeroNode2 node1;
     HeroNode2 node2;
