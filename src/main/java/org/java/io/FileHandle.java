@@ -5,7 +5,7 @@ import java.io.*;
 public class FileHandle {
 
     public static void write() throws IOException {
-        FileOutputStream fos = new FileOutputStream("/Users/jialimin/nashwork/temp.txt");
+        FileOutputStream fos = new FileOutputStream("/Users/jialimin/Desktop/temp.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
         User user = new User();
@@ -18,7 +18,7 @@ public class FileHandle {
     }
 
     public static void read() throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream("/Users/jialimin/nashwork/temp.txt");
+        FileInputStream fis = new FileInputStream("/Users/jialimin/Desktop/temp.txt");
 
         ObjectInputStream oin = new ObjectInputStream(fis);
 
